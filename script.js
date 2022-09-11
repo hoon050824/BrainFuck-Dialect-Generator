@@ -26,7 +26,7 @@ function renewing(){
     open = open.value;
     close = close.value;
 
-    di_to_bf = {
+    di_bf = {
         gt: '>',
         lt: '<',
         plus: '+',
@@ -37,7 +37,7 @@ function renewing(){
         close: ']'
     };
 
-    bf_to_di = {
+    bf_di = {
         '>': gt,
         '<': lt,
         '+': plus,
@@ -59,25 +59,122 @@ function renewing(){
     ex_open = document.getElementById('ex_open');
     ex_clost = document.getElementById('ex_close');
 
-    print_gt.innerText = bf_to_di['>'];
-    print_lt.innerText = bf_to_di['<'];
-    print_plus.innerText = bf_to_di['+'];
-    print_minus.innerText = bf_to_di['-'];
-    print_dot.innerText = bf_to_di['.'];
-    print_comma.innerText = bf_to_di[','];
-    print_open.innerText = bf_to_di['['];
-    print_close.innerText = bf_to_di[']'];
-    ex_open.innerText = bf_to_di['['];
-    ex_close.innerText = bf_to_di[']'];
+    print_gt.innerText = bf_di['>'];
+    print_lt.innerText = bf_di['<'];
+    print_plus.innerText = bf_di['+'];
+    print_minus.innerText = bf_di['-'];
+    print_dot.innerText = bf_di['.'];
+    print_comma.innerText = bf_di[','];
+    print_open.innerText = bf_di['['];
+    print_close.innerText = bf_di[']'];
+    ex_open.innerText = bf_di[']'];
+    ex_close.innerText = bf_di['['];
+
+    example = document.getElementById('example');
+    example.innerText = bf_to_di('++++++++++[>+++++++>++++++++++>+++>+<<<<-]>++.>+.+++++++..+++.>++++++++++++++.------------.<<+++++++++++++++.>.+++.------.--------.>+.')
 }
 
-function compling(code){
+function compiling(){
+    code = String(document.getElementById('code').value);
+    code = di_to_bf(code); //console.log(code);
+    var pointer = 0;
+    var cursor = 0;
+    var memory = [];
+    var loopstack = [];
+    var s = ''
 
+    var instruction = code[cursor];
+
+    while(cursor < code.length){
+        //console.log(instruction);
+
+        switch(instruction){
+            case '>': pointer++;
+                    break;
+            case '<': pointer--;
+                    break;
+            case '+': memory[pointer] = (memory[pointer] != undefined) ? (memory[pointer] + 1) : 1;
+                    break;
+            case '-': memory[pointer] = (memory[pointer] != undefined) ? (memory[pointer] - 1) : -1;
+                    break;
+            case '.': s += String.fromCharCode(memory[pointer]);
+                    break;
+            case ',': memory[pointer] = parseInt(prompt('입력'));
+                    break;
+            case '[': 
+                    var bracket = 1;
+
+                    if(memory[pointer]){
+                        loopstack.push(cursor)
+                    } else{
+                        while(bracket && code[++cursor]){
+                            if(code[cursor] == ']'){
+                                bracket--;
+                            } else if(code[cursor] == '['){
+                                bracket++;
+                            }
+                        }
+                    } break;
+            case ']': cursor = loopstack.pop() - 1;
+                    break
+        }
+
+        instruction = code[++cursor];
+    }
+
+    console.log(memory);
+    console.log(s);
+    output = document.getElementById('output');
+    output.innerText = s;
 }
+
+function di_to_bf(code){
+    var s = '';
+
+    for(var i of code){
+        if(di_bf[i] != undefined){
+            s += di_bf[i];
+        }
+    }
+
+    return s;
+}
+
+function bf_to_di(code){
+    var s = '';
+
+    for(var i of code){
+        if(bf_di[i] != undefined){
+            s += bf_di[i];
+        }
+    }
+
+    return s;
+}
+
+var di_bf = {
+    '>': '>',
+    '<': '<',
+    '+': '+',
+    '-': '-',
+    '.': '.',
+    ',': ',',
+    '[': '[',
+    ']': ']'
+};
+
+var bf_di = {
+    '>': '>',
+    '<': '<',
+    '+': '+',
+    '-': '-',
+    '.': '.',
+    ',': ',',
+    '[': '[',
+    ']': ']'
+};
 
 var renewal = document.getElementById("renewal");
 renewal.addEventListener('click', renewing);
-var complie = document.getElementById("complie");
-
-var di_to_bf = {};
-var bf_to_di = {};
+var complie = document.getElementById("compile");
+complie.addEventListener('click', compiling)
