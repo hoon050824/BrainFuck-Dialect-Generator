@@ -155,15 +155,32 @@
 
             <tr>
                 <td><div id="print_open">[</div></td>
-                <td>포인터가 가르키는 주소에 저장된 바이트 값이 0이면 짝이되는 <span id="ex_open">[</span>로 이동한다(== '[')</td>
+                <td>포인터가 가르키는 주소에 저장된 바이트 값이 0이면 짝이되는 <span id="ex_open">]</span>로 이동한다(== '[')</td>
             </tr>
 
             <tr>
                 <td><div id="print_close">]</div></td>
-                <td>포인터가 가르키는 주소에 저장된 바이트 값이 0이 아니면 짝이되는 <span id="ex_close">]</span>로 이동한다(== ']')</td>
+                <td>포인터가 가르키는 주소에 저장된 바이트 값이 0이 아니면 짝이되는 <span id="ex_close">[</span>로 이동한다(== ']')</td>
             </tr>
         </table>
         
+        <table>
+            <tr>
+                <td><textarea id="code" placeholder="여기에 코드 입력"></textarea></td>
+            </tr>
+
+            <tr>
+                <td>
+                    <span id="output">결과</span>
+                </td>
+                <td>
+                    <button id="compile">실행</button>
+                </td>
+            </tr>
+        </table>
+
+        Hello World!<br>
+        <span id="example">++++++++++[>+++++++>++++++++++>+++>+<<<<-]>++.>+.+++++++..+++.>++++++++++++++.------------.<<+++++++++++++++.>.+++.------.--------.>+.</span>
 
         <script src="script.js" type="text/javascript"></script>
     </body>
