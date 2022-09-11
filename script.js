@@ -169,10 +169,10 @@ function compiling(){
     }
 
     console.log(memory);
-    console.log(s);
+    console.log(decodeURIComponent(escape(s)));
 
     var output = document.getElementById('output');
-    output.innerText = s;
+    output.innerText = decodeURIComponent(escape(s));
 }
 
 function di_to_bf(code){
