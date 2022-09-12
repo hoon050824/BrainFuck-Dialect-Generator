@@ -17,7 +17,18 @@ function renewing(){
         comma.value.length >= 2 ||
         open.value.length >= 2 ||
         close.value.length >= 2
-    ){alert('방언으로 사용될 문자는 공백이 아닌 낱글자여야 합니다'); return;}
+    ){alert('방언으로 사용될 문자는 낱글자여야 합니다!'); return;}
+
+    if(
+        ["​", " ", " ", " ", " ", " ", " ", " ", " ", " ", "⠀"].includes(gt.value) ||
+        ["​", " ", " ", " ", " ", " ", " ", " ", " ", " ", "⠀"].includes(lt.value) ||
+        ["​", " ", " ", " ", " ", " ", " ", " ", " ", " ", "⠀"].includes(plus.value) ||
+        ["​", " ", " ", " ", " ", " ", " ", " ", " ", " ", "⠀"].includes(minus.value) ||
+        ["​", " ", " ", " ", " ", " ", " ", " ", " ", " ", "⠀"].includes(dot.value) ||
+        ["​", " ", " ", " ", " ", " ", " ", " ", " ", " ", "⠀"].includes(comma.value) ||
+        ["​", " ", " ", " ", " ", " ", " ", " ", " ", " ", "⠀"].includes(open.value) ||
+        ["​", " ", " ", " ", " ", " ", " ", " ", " ", " ", "⠀"].includes(close.value)
+    ){alert('공백문자는 방언으로 사용할 수 없습니다!'); return;}
 
     var check = new Set()
     check.add((gt.value.length <= 0) ? '>' : gt.value);
@@ -101,7 +112,7 @@ function renewing(){
     var print_open = document.getElementById('print_open');
     var print_close = document.getElementById('print_close');
     var ex_open = document.getElementById('ex_open');
-    var ex_clost = document.getElementById('ex_close');
+    var ex_close = document.getElementById('ex_close');
 
     print_gt.innerText = bf_di['>'];
     print_lt.innerText = bf_di['<'];
@@ -114,9 +125,10 @@ function renewing(){
     ex_open.innerText = bf_di[']'];
     ex_close.innerText = bf_di['['];
 
-    var example = document.getElementById('example');
     console.log(bf_to_di('><+-.,[]'));
     console.log(di_to_bf(bf_to_di('><+-.,[]')));
+
+    var example = document.getElementById('example');
     example.innerText = bf_to_di('++++++++++[>+++++++>++++++++++>+++>+<<<<-]>++.>+.+++++++..+++.>++++++++++++++.------------.<<+++++++++++++++.>.+++.------.--------.>+.');
 }
 
@@ -144,6 +156,7 @@ function compiling(){
             case '-': memory[pointer] = (memory[pointer] != undefined) ? (memory[pointer] - 1) : -1;
                     break;
             case '.': s += String.fromCharCode(memory[pointer]);
+                    console.log(s)
                     break;
             case ',': memory[pointer] = parseInt(prompt('입력'));
                     break;
