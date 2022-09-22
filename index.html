@@ -68,57 +68,55 @@
             <summary>BrainFuck</summary>
         </details>
         
-        <div>
-            <fieldset id="setting">
-                <legend><b>방언 설정</b>: 표준 BrainFuck문법의 문자에 대응될 새로운 문자를 입력해주세요</legend>
-                
-                <setting>
-                    <table border="0">
-                        <tr>
-                            <td>&gt;</td>
-                            <td><input id="gt" type="text" placeholder=">"></td>
-                        </tr>
-                        
-                        <tr>
-                            <td>&lt;</td>
-                            <td><input id="lt" type="text" placeholder="<"></td>
-                        </tr>
+        <fieldset id="setting">
+            <legend><b>방언 설정</b>: 표준 BrainFuck문법의 문자에 대응될 새로운 문자를 입력해주세요</legend>
 
-                        <tr>
-                            <td>+</td>
-                            <td><input id="plus" type="text" placeholder="+"></td>
-                        </tr>
+            <setting>
+                <table border="0">
+                    <tr>
+                        <td>&gt;</td>
+                        <td><input id="gt" type="text" placeholder=">"></td>
+                    </tr>
 
-                        <tr>
-                            <td>-</td>
-                            <td><input id="minus" type="text" placeholder="-"></td>
-                        </tr>
+                    <tr>
+                        <td>&lt;</td>
+                        <td><input id="lt" type="text" placeholder="<"></td>
+                    </tr>
 
-                        <tr>
-                            <td>.</td>
-                            <td><input id="dot" type="text" placeholder="."></td>
-                        </tr>
+                    <tr>
+                        <td>+</td>
+                        <td><input id="plus" type="text" placeholder="+"></td>
+                    </tr>
 
-                        <tr>
-                            <td>,</td>
-                            <td><input id="comma" type="text" placeholder=","></td>
-                        </tr>
+                    <tr>
+                        <td>-</td>
+                        <td><input id="minus" type="text" placeholder="-"></td>
+                    </tr>
 
-                        <tr>
-                            <td>[</td>
-                            <td><input id="open" type="text" placeholder="["></td>
-                        </tr>
-                        
-                        <tr>
-                            <td>]</td>
-                            <td><input id="close" type="text" placeholder="]"></td>
-                        </tr>
-                    </table>
-                </setting>
-                
-                <button value="renew" id="renewal">문법 갱신</button>
-            </fieldset>
-        </div>
+                    <tr>
+                        <td>.</td>
+                        <td><input id="dot" type="text" placeholder="."></td>
+                    </tr>
+
+                    <tr>
+                        <td>,</td>
+                        <td><input id="comma" type="text" placeholder=","></td>
+                    </tr>
+
+                    <tr>
+                        <td>[</td>
+                        <td><input id="open" type="text" placeholder="["></td>
+                    </tr>
+
+                    <tr>
+                        <td>]</td>
+                        <td><input id="close" type="text" placeholder="]"></td>
+                    </tr>
+                </table>
+            </setting>
+
+            <button value="renew" id="renewal">문법 갱신</button>
+        </fieldset>
 
         <table border="1">
             <caption>방언의 문법</caption>
