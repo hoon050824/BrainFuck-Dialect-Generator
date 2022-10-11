@@ -76,42 +76,42 @@
                 <table border="0">
                     <tr>
                         <td>&gt;</td>
-                        <td><input id="gt" type="text" placeholder=">"></td>
+                        <td><input id="gt" type="text" placeholder=">" title=">"></td>
                     </tr>
                     
                     <tr>
                         <td>&lt;</td>
-                        <td><input id="lt" type="text" placeholder="<"></td>
+                        <td><input id="lt" type="text" placeholder="<" title="<"></td>
                     </tr>
 
                     <tr>
                         <td>+</td>
-                        <td><input id="plus" type="text" placeholder="+"></td>
+                        <td><input id="plus" type="text" placeholder="+" title="+"></td>
                     </tr>
 
                     <tr>
                         <td>-</td>
-                        <td><input id="minus" type="text" placeholder="-"></td>
+                        <td><input id="minus" type="text" placeholder="-" title="-"></td>
                     </tr>
 
                     <tr>
                         <td>.</td>
-                        <td><input id="dot" type="text" placeholder="."></td>
+                        <td><input id="dot" type="text" placeholder="." title="."></td>
                     </tr>
 
                     <tr>
                         <td>,</td>
-                        <td><input id="comma" type="text" placeholder=","></td>
+                        <td><input id="comma" type="text" placeholder="," title=","></td>
                     </tr>
 
                     <tr>
                         <td>[</td>
-                        <td><input id="open" type="text" placeholder="["></td>
+                        <td><input id="open" type="text" placeholder="[" title="["></td>
                     </tr>
                     
                     <tr>
                         <td>]</td>
-                        <td><input id="close" type="text" placeholder="]"></td>
+                        <td><input id="close" type="text" placeholder="]" title="]"></td>
                     </tr>
                 </table>
             </setting>
@@ -165,7 +165,7 @@
         
         <table>
             <tr>
-                <td><textarea id="code" onInput="compiling()" placeholder="여기에 코드 입력"></textarea></td>
+                <td><textarea id="code" onInput="isContainComma()" placeholder="여기에 코드 입력"></textarea><span id="showButton"></span></td>
                 <td><span id="output">결과</span></td>
             </tr>
         </table>
