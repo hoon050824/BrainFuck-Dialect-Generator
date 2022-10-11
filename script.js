@@ -1,3 +1,25 @@
+var bf_di = {
+    '>': '>',
+    '<': '<',
+    '+': '+',
+    '-': '-',
+    '.': '.',
+    ',': ',',
+    '[': '[',
+    ']': ']'
+};
+
+var di_bf = {
+    '>': '>',
+    '<': '<',
+    '+': '+',
+    '-': '-',
+    '.': '.',
+    ',': ',',
+    '[': '[',
+    ']': ']'
+};
+
 function renewing(){
     var gt = document.getElementById('gt');
     var lt = document.getElementById('lt');
@@ -9,37 +31,24 @@ function renewing(){
     var close = document.getElementById('close');
 
     if(
-        gt.value.length >= 2 ||
-        lt.value.length >= 2 ||
-        plus.value.length >= 2 ||
-        minus.value.length >= 2 ||
-        dot.value.length >= 2 ||
-        comma.value.length >= 2 ||
-        open.value.length >= 2 ||
-        close.value.length >= 2
-    ){alert('방언으로 사용될 문자는 낱글자여야 합니다!'); return;}
-
-    if(
-        ["​", " ", " ", " ", " ", " ", " ", " ", " ", " ", "⠀"].includes(gt.value) ||
-        ["​", " ", " ", " ", " ", " ", " ", " ", " ", " ", "⠀"].includes(lt.value) ||
-        ["​", " ", " ", " ", " ", " ", " ", " ", " ", " ", "⠀"].includes(plus.value) ||
-        ["​", " ", " ", " ", " ", " ", " ", " ", " ", " ", "⠀"].includes(minus.value) ||
-        ["​", " ", " ", " ", " ", " ", " ", " ", " ", " ", "⠀"].includes(dot.value) ||
-        ["​", " ", " ", " ", " ", " ", " ", " ", " ", " ", "⠀"].includes(comma.value) ||
-        ["​", " ", " ", " ", " ", " ", " ", " ", " ", " ", "⠀"].includes(open.value) ||
-        ["​", " ", " ", " ", " ", " ", " ", " ", " ", " ", "⠀"].includes(close.value)
+        [" ", "​", " ", " ", " ", " ", " ", " ", " ", " ", " ", "⠀"].includes(gt.value) ||
+        [" ", "​", " ", " ", " ", " ", " ", " ", " ", " ", " ", "⠀"].includes(lt.value) ||
+        [" ", "​", " ", " ", " ", " ", " ", " ", " ", " ", " ", "⠀"].includes(plus.value) ||
+        [" ", "​", " ", " ", " ", " ", " ", " ", " ", " ", " ", "⠀"].includes(minus.value) ||
+        [" ", "​", " ", " ", " ", " ", " ", " ", " ", " ", " ", "⠀"].includes(dot.value) ||
+        [" ", "​", " ", " ", " ", " ", " ", " ", " ", " ", " ", "⠀"].includes(comma.value) ||
+        [" ", "​", " ", " ", " ", " ", " ", " ", " ", " ", " ", "⠀"].includes(open.value) ||
+        [" ", "​", " ", " ", " ", " ", " ", " ", " ", " ", " ", "⠀"].includes(close.value)
     ){alert('공백문자는 방언으로 사용할 수 없습니다!'); return;}
 
-    var check = new Set()
-    check.add((gt.value.length <= 0) ? '>' : gt.value);
-    check.add((lt.value.length <= 0) ? '<' : lt.value);
-    check.add((plus.value.length <= 0) ? '+' : plus.value);
-    check.add((minus.value.length <= 0) ? '-' : minus.value);
-    check.add((dot.value.length <= 0) ? '.' : dot.value);
-    check.add((comma.value.length <= 0) ? ',' : comma.value);
-    check.add((open.value.length <= 0) ? '[' : open.value);
-    check.add((close.value.length <= 0) ? ']' : close.value);
-    if(check.size < 8){alert('중복된 문자가 존재합니다!'); return;}
+    for(var i of [gt, lt, plus, minus, dot, comma, open, close]){
+        for(var j of [gt, lt, plus, minus, dot, comma, open, close]){
+            if(
+                (i != j && j.value.length > 0 && i.value.includes(j.value)) ||
+                (i.value.length <= 0 && j.value.length > 0 && i.title.includes(j.value))
+            ){alert('중복된 문자가 존재합니다!'); return;}
+        }
+    }
 
     gt.placeholder = (gt.value.length <= 0) ? '>' : gt.value;
     lt.placeholder = (lt.value.length <= 0) ? '<' : lt.value;
@@ -132,9 +141,24 @@ function renewing(){
     example.innerText = bf_to_di('++++++++++[>+++++++>++++++++++>+++>+<<<<-]>++.>+.+++++++..+++.>++++++++++++++.------------.<<+++++++++++++++.>.+++.------.--------.>+.');
 }
 
+function isContainComma(){
+    var code = String(document.getElementById('code').value);
+    code = di_to_bf(code); console.log(code);
+
+    if(code.includes(',')){
+        var button = document.getElementById('showButton');
+        button.innerHTML = '<button onClick=\'compiling()\'>실행</button>'
+    } else{
+        var button = document.getElementById('showButton');
+        button.innerHTML = ''
+        compiling();
+    }
+
+}
+
 function compiling(){
     var code = String(document.getElementById('code').value);
-    code = di_to_bf(code); //console.log(code);
+    code = di_to_bf(code); console.log(code);
     var pointer = 0;
     var cursor = 0;
     var memory = [];
@@ -191,27 +215,59 @@ function compiling(){
 function di_to_bf(code){
     var s = '';
 
-    for(var i of code){
-        if(bf_di['>'] == i){
-            s += '>';
-        } else if(bf_di['<'] == i){
-            s += '<';
-        } else if(bf_di['+'] == i){
-            s += '+';
-        } else if(bf_di['-'] == i){
-            s += '-';
-        } else if(bf_di['.'] == i){
-            s += '.';
-        } else if(bf_di[','] == i){
-            s += ',';
-        } else if(bf_di['['] == i){
-            s += '[';
-        } else if(bf_di[']'] == i){
-            s += ']';
+    for(var i = 0; i <= code.length; i++){
+        tmp = code[i];
+
+        for(var j = i+1; j <= code.length; j++){
+            if(bf_di['>'] == tmp){
+                s += '>';
+                i = j-1;
+                break;
+            } else if(bf_di['<'] == tmp){
+                s += '<';
+                i = j-1;
+                break;
+            } else if(bf_di['+'] == tmp){
+                s += '+';
+                i = j-1;
+                break;
+            } else if(bf_di['-'] == tmp){
+                s += '-';
+                i = j-1;
+                break;
+            } else if(bf_di['.'] == tmp){
+                s += '.';
+                i = j-1;
+                break;
+            } else if(bf_di[','] == tmp){
+                s += ',';
+                i = j-1;
+                break;
+            } else if(bf_di['['] == tmp){
+                s += '[';
+                i = j-1;
+                break;
+            } else if(bf_di[']'] == tmp){
+                s += ']';
+                i = j-1;
+                break;
+            } else {
+                tmp += code[j];
+            }
+            
+            /*
+            if(di_bf[tmp] != undefined){
+                s += di_bf[tmp];
+                i = j-1;
+                break;
+            } else {
+                tmp += code[j];
+            }
+            */
         }
     }
 
-    return s;W
+    return s;
 }
 
 function bf_to_di(code){
@@ -225,30 +281,3 @@ function bf_to_di(code){
 
     return s;
 }
-
-var bf_di = {
-    '>': '>',
-    '<': '<',
-    '+': '+',
-    '-': '-',
-    '.': '.',
-    ',': ',',
-    '[': '[',
-    ']': ']'
-};
-
-var di_bf = {
-    '>': '>',
-    '<': '<',
-    '+': '+',
-    '-': '-',
-    '.': '.',
-    ',': ',',
-    '[': '[',
-    ']': ']'
-};
-
-var renewal = document.getElementById("renewal");
-renewal.addEventListener('click', renewing);
-var complie = document.getElementById("compile");
-complie.addEventListener('click', compiling)
