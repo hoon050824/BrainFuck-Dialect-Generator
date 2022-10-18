@@ -116,52 +116,59 @@
                 </table>
             </setting>
             
+            <button onClick="loadDialect()" id="load">저장된 문법<br>불러오기</button>
             <button onClick="renewing()" id="renewal">문법 갱신</button>
         </fieldset>
-        
-        <table border="1">
-            <caption>방언의 문법</caption>
 
-            <tr>
-                <td><div id="print_gt">&gt;</div></td>
-                <td>포인터가 가르키는 주소값을 증가시킨다(== '&gt;')</td>
-            </tr>
-            
-            <tr>
-                <td><div id="print_lt">&lt;</div></td>
-                <td>포인터가 가르키는 주소값을 감소시킨다(== '&lt;')</td>
-            </tr>
+        <br><br>
 
-            <tr>
-                <td><div id="print_plus">+</div></td>
-                <td>포인터가 가르키는 주소에 저장된 바이트 값을 증가시킨다(== '+')</td>
-            </tr>
+        <fieldset>
+            <table border="1">
+                <caption>방언의 문법</caption>
 
-            <tr>
-                <td><div id="print_minus">-</div></td>
-                <td>포인터가 가르키는 주소에 저장된 바이트 값을 감소시킨다(== '-')</td>
-            </tr>
+                <tr>
+                    <td><div id="print_gt">&gt;</div></td>
+                    <td>포인터가 가르키는 주소값을 증가시킨다(== '&gt;')</td>
+                </tr>
+                
+                <tr>
+                    <td><div id="print_lt">&lt;</div></td>
+                    <td>포인터가 가르키는 주소값을 감소시킨다(== '&lt;')</td>
+                </tr>
 
-            <tr>
-                <td><div id="print_dot">.</div></td>
-                <td>포인터가 가르키는 주소에 저장된 바이트 값을 아스키코드에 대응시켜 문자로 출력한다(== '.')</td>
-            </tr>
+                <tr>
+                    <td><div id="print_plus">+</div></td>
+                    <td>포인터가 가르키는 주소에 저장된 바이트 값을 증가시킨다(== '+')</td>
+                </tr>
 
-            <tr>
-                <td><div id="print_comma">,</div></td>
-                <td>포인터가 가르키는 주소에 아스키코드 값을 입력받아 저장한다(== ',')</td>
-            </tr>
+                <tr>
+                    <td><div id="print_minus">-</div></td>
+                    <td>포인터가 가르키는 주소에 저장된 바이트 값을 감소시킨다(== '-')</td>
+                </tr>
 
-            <tr>
-                <td><div id="print_open">[</div></td>
-                <td>포인터가 가르키는 주소에 저장된 바이트 값이 0이면 짝이되는 <span id="ex_open">]</span>로 이동한다(== '[')</td>
-            </tr>
+                <tr>
+                    <td><div id="print_dot">.</div></td>
+                    <td>포인터가 가르키는 주소에 저장된 바이트 값을 아스키코드에 대응시켜 문자로 출력한다(== '.')</td>
+                </tr>
 
-            <tr>
-                <td><div id="print_close">]</div></td>
-                <td>포인터가 가르키는 주소에 저장된 바이트 값이 0이 아니면 짝이되는 <span id="ex_close">[</span>로 이동한다(== ']')</td>
-            </tr>
-        </table>
+                <tr>
+                    <td><div id="print_comma">,</div></td>
+                    <td>포인터가 가르키는 주소에 아스키코드 값을 입력받아 저장한다(== ',')</td>
+                </tr>
+
+                <tr>
+                    <td><div id="print_open">[</div></td>
+                    <td>포인터가 가르키는 주소에 저장된 바이트 값이 0이면 짝이되는 <span id="ex_open">]</span>로 이동한다(== '[')</td>
+                </tr>
+
+                <tr>
+                    <td><div id="print_close">]</div></td>
+                    <td>포인터가 가르키는 주소에 저장된 바이트 값이 0이 아니면 짝이되는 <span id="ex_close">[</span>로 이동한다(== ']')</td>
+                </tr>
+            </table>
+
+            <button onClick="saveDialect()" id="save">현재 문법<br>저장하기</button>
+        </fieldset>
         
         <table>
             <tr>
