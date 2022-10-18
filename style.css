@@ -29,15 +29,32 @@ setting input{
     width: 80%;
 }
 
-#renewal{
+#renewal, #load, #save{
     font-weight: bolder;
     font-size: 100%;
     margin-left: 80%;
+    margin-top: 0.75%;
+    margin-bottom: 0.75%;
     min-width: 10%;
     width: 15%;
     height: 5%;
-    background-color:rgb(55, 211, 35);
-    color:rgb(255, 255, 255);
-    border-color: rgb(55, 211, 35);
     border-radius: 10%;
+}
+
+#renewal {
+    background-color:rgb(184, 145, 236);
+    color:rgb(255, 255, 255);
+    border-color:rgb(184, 145, 236);
+}
+
+#save {
+    background-color:rgb(77, 100, 228);
+    color:rgb(255, 255, 255);
+    border-color: rgb(77, 100, 228);
+}
+
+#load {
+    background-color:rgb(94, 213, 168);
+    color:rgb(255, 255, 255);
+    border-color: rgb(94, 213, 168);
 }
