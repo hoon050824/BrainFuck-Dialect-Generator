@@ -116,7 +116,8 @@
                 </table>
             </setting>
             
-            <button onClick="loadDialect()" id="load">저장된 문법<br>불러오기</button>
+            <span id="reset"><input onChange="loadDialect()" id="import" type="file" accept=".json"></span>
+            <button onClick="document.getElementById('import').click()" id="load">저장된 문법<br>불러오기</button>
             <button onClick="renewing()" id="renewal">문법 갱신</button>
         </fieldset>
 
@@ -167,7 +168,9 @@
                 </tr>
             </table>
 
-            <button onClick="saveDialect()" id="save">현재 문법<br>저장하기</button>
+            <a href="#" id="export" download="Dialect.json">
+                <button onClick="saveDialect()" id="save">현재 문법<br>저장하기</button>
+            </a>
         </fieldset>
         
         <table>
