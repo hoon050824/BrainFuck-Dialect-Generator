@@ -141,6 +141,60 @@ function renewing(){
     example.innerText = bf_to_di('++++++++++[>+++++++>++++++++++>+++>+<<<<-]>++.>+.+++++++..+++.>++++++++++++++.------------.<<+++++++++++++++.>.+++.------.--------.>+.');
 }
 
+function loadDialect(){
+    var import_file = document.getElementById('import');
+    var content = new FileReader();
+    content.readAsText(import_file.files[0]);
+    
+    content.onload = (e) => {
+        content = content.result;
+        console.log(import_file.files[0]); console.log(content);
+
+        if(
+            import_file.files[0].type != "application/json" ||
+            !JSON.parse(content).isDialect
+        ){document.getElementById('reset').innerHTML = '<input onChange="loadDialect()" id="import" type="file" accept=".json">'; alert('올바른 파일이 아닙니다!');  return}
+
+        import_file = JSON.parse(content);
+
+        var gt = document.getElementById('gt');
+        var lt = document.getElementById('lt');
+        var plus = document.getElementById('plus');
+        var minus = document.getElementById('minus');
+        var dot = document.getElementById('dot');
+        var comma = document.getElementById('comma');
+        var open = document.getElementById('open');
+        var close = document.getElementById('close');
+
+        gt.value = import_file.gt;
+        lt.value = import_file.lt;
+        plus.value = import_file.plus;
+        minus.value = import_file.minus;
+        dot.value = import_file.dot;
+        comma.value = import_file.comma;
+        open.value = import_file.open;
+        close.value = import_file.close;
+    }
+}
+
+function saveDialect(){
+    var export_file = {
+        isDialect: true,
+        gt: bf_di['>'],
+        lt: bf_di['<'],
+        plus: bf_di['+'],
+        minus: bf_di['-'],
+        dot: bf_di['.'],
+        comma: bf_di[','],
+        open: bf_di['['],
+        close: bf_di[']'],
+    }; export_file = JSON.stringify(export_file, null, "\t");
+
+    var dataURI = "data:application/json; charset=UTF-8," + encodeURIComponent(export_file);
+    var link = document.getElementById('export');
+    link.href = dataURI;
+}
+
 function isContainComma(){
     var code = String(document.getElementById('code').value);
     code = di_to_bf(code); console.log(code);
