@@ -1,0 +1,15 @@
+<html>
+    <head>
+        <meta charset="UTF-8"></meta>
+        <link href="../CSS/style.css" rel="stylesheet" type="text/css">
+        <title id="plain"></title>
+    </head>
+
+    <body>
+        <script>
+            document.getElementById('plain').innerHTML = localStorage.getItem('ExampleName')
+            document.write('<textarea readonly style="width: 100%; height:80%; resize: none;">'+localStorage.getItem('ExampleCode')+'</textarea><br><br>');
+            document.write('<button id="return" onClick="window.close()" style="width: 100%; height: 10%;">돌아가기</button>')
+        </script>
+    </body>
+</html>
