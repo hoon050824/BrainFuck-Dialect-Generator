@@ -1,0 +1,186 @@
+@font-face {
+    font-family: 'neodgm';
+    src: url('../Font/neodgm_code.ttf') format('truetype');
+}
+
+body {
+    background-color: black;
+    color: white;
+    text-align: center;
+}
+
+input {
+    width: 100%;
+    height: 100%;
+    background-color: dimgray;
+    color:rgb(200, 200, 200);
+    font-weight: bolder;
+    font-size: 150%;
+}
+
+#menu {
+    margin: 0% 20% 0% 20%;
+    width: 60%;
+    height: 60%;
+    font-weight: bolder;
+    font-size: 275%;
+    text-decoration-color: lime;
+    text-align: center;
+    background-color: black;
+}
+
+#menu button {
+    width: 100%;
+    height: 100%;
+    border: none;
+    background-color: black;
+    color: lime;
+    font-family: 'neodgm';
+    font-size: 100%;
+}
+
+#menu td {
+    width:50%;
+}
+
+#menu button:hover {
+    background-color: dimgray;
+}
+
+#setting, #indicator {
+    display: inline;
+}
+
+#setting {
+    text-align: left;
+    width: 40%;
+    height: 65%;
+    margin: 0% 0% 0% 0%;
+    clear: both;
+}
+
+#setting table {
+    border-color: white;
+    margin: 3.75% 0% 0% 3.75%;
+    width: 90%;
+    height: 70%;
+    font-size: 175%;
+}
+
+#setting button, #indicator button {
+    font-size: 90%;
+    font-family: 'neodgm';
+    background-color: black;
+    color: lime;
+}
+
+#setting button {
+    margin: 2.5% 0% 0% 0%;
+    width: 12.5%;
+    height: 7.5%;
+    min-width: 95px;
+    min-height: 57.5px;
+}
+
+#setting button:hover, #indicator button:hover {
+    background-color: dimgray;
+}
+
+#setting #load {
+    margin-left: 68.5%;
+}
+
+#indicator {
+    width: 40%;
+    height: 30%;
+    margin: 0% 0% 0% 0%;
+    clear: both;
+}
+
+#indicator table {
+    margin: 0% 0% 0% 0%;
+    width: 100%;
+    height: 80%;
+}
+
+#indicator button {
+    margin: 0.25% 0% 0% 80%;
+    width: 12.5%;
+    height: 15%;
+    min-width: 95px;
+    min-height: 45px;
+}
+
+#return {
+    width: 7.5%;
+    height: 7.5%;
+    color: lime;
+    font-family: 'neodgm';
+    font-size: 80%;
+    font-weight: bold;
+    border-color: black;
+    background-color: black;
+}
+
+#return:hover {
+    border-color: dimgray;
+    background-color: dimgray;
+}
+
+#logo {
+    width: 100%;
+    display: block;
+    text-align: center;
+}
+
+#crackedBrain {
+    height: 10%;
+    margin-bottom: 1.25%;
+}
+
+#intro {
+    text-align: center;
+}
+
+textarea {
+    display: inline;
+    background-color: dimgray;
+    color: lime;
+    font-weight: bolder;
+    width: 45%;
+    height: 70%;
+    resize: none;
+}
+
+#showButton button {
+    width: 5%;
+    height: 2.5%;
+    position: relative;
+    left: -5.25%;
+    top: -1.25%;
+    z-index: 2;
+}
+
+#output, #translated {
+    display: inline;
+    font-family: 'neodgm';
+    background-color: rgb(100, 100, 100);
+    width: 45%;
+    height: 70%;
+}
+
+table {
+    width: 50%;
+    height: 40%;
+    font-size: 75%;
+    margin: 0% 25% 0% 25%;
+    border-color: rgb(50,50,50);
+}
+
+#import {
+    visibility: hidden;
+}
+
+legend {
+    font-family: 'neodgm';
+}
