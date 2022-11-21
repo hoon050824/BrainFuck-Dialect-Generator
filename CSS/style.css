@@ -114,6 +114,8 @@ input {
 #return {
     width: 7.5%;
     height: 7.5%;
+    min-width: 125px;
+    min-height: 80px;
     color: lime;
     font-family: 'neodgm';
     font-size: 80%;
