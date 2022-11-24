@@ -26,6 +26,11 @@ input {
     min-height: 300;
 }
 
+#creator {
+    color: lime;
+    text-decoration-line: none;
+}
+
 #menu {
     margin: 0% 20% 0% 20%;
     width: 60%;

@@ -3,82 +3,20 @@
         <meta charset="UTF-8">
         <title>Translator</title>
         <link href="../CSS/style.css" rel="stylesheet" type="text/css">
-        <script src="../JavaScript/script.js"></script>
-        <script src="../JavaScript/Translator.js"></script>
+        <script src="../JavaScript/Common.js"></script>
     </head>
 
     <body onLoad="getPair()">
-        <h1><button id="return" onClick="window.history.back()">뒤로가기</button></h1>
+        <h1><button id="return" onClick="window.history.back()">뒤로가기</button></h1><br>
         
-        <details>
-            <fieldset id="indicator">
-                <legend>방언의 문법</legend>
-                
-                <table border="1">
-
-                    <header>
-                        <tr>
-                            <td>문자</td>
-                            <td>의미</td>
-                        </tr>
-                    </header>
-
-                    <tr>
-                        <td><div id="print_gt">&gt;</div></td>
-                        <td>포인터가 가르키는 주소값을 증가시킨다(== '&gt;')</td>
-                    </tr>
-                    
-                    <tr>
-                        <td><div id="print_lt">&lt;</div></td>
-                        <td>포인터가 가르키는 주소값을 감소시킨다(== '&lt;')</td>
-                    </tr>
-
-                    <tr>
-                        <td><div id="print_plus">+</div></td>
-                        <td>포인터가 가르키는 주소에 저장된 바이트 값을 증가시킨다(== '+')</td>
-                    </tr>
-
-                    <tr>
-                        <td><div id="print_minus">-</div></td>
-                        <td>포인터가 가르키는 주소에 저장된 바이트 값을 감소시킨다(== '-')</td>
-                    </tr>
-
-                    <tr>
-                        <td><div id="print_dot">.</div></td>
-                        <td>포인터가 가르키는 주소에 저장된 바이트 값을 아스키코드에 대응시켜 문자로 출력한다(== '.')</td>
-                    </tr>
-
-                    <tr>
-                        <td><div id="print_comma">,</div></td>
-                        <td>포인터가 가르키는 주소에 아스키코드 값을 입력받아 저장한다(== ',')</td>
-                    </tr>
-
-                    <tr>
-                        <td><div id="print_open">[</div></td>
-                        <td>포인터가 가르키는 주소에 저장된 바이트 값이 0이면 짝이되는 <span id="ex_open">]</span>로 이동한다(== '[')</td>
-                    </tr>
-
-                    <tr>
-                        <td><div id="print_close">]</div></td>
-                        <td>포인터가 가르키는 주소에 저장된 바이트 값이 0이 아니면 짝이되는 <span id="ex_close">[</span>로 이동한다(== ']')</td>
-                    </tr>
-                </table>
-
-                <a href="#" id="export" download="Dialect.json">
-                    <button onClick="saveDialect()" id="save">현재 문법<br>저장하기</button>
-                </a>
-            </fieldset>
-            <summary>적용된 문법 보기</summary>
-        </details><br>
-
-        <textarea id="beTranslate" placeholder="번역될 브레인퍽 코드" onInput="proxy()"></textarea>
-        <textarea readonly id="translated">번역된 방언 코드</textarea>
-
-        <script>
-            function proxy(){
-                translate();
-            }
-        </script>
+        <table id="menu">
+            <tr>
+                <td id="BF2DI"><a href="./BF2DI.html" target="_self"><button>BF &nbsp; → &nbsp; DI</button></a></td>
+            </tr>
+            <tr>
+                <td id="DI2BF"><a href="./DI2BF.html" target="_self"><button>DI &nbsp; → &nbsp; BF</button></a></td>
+            </tr>
+        </table>
     </body>
 
 </html>

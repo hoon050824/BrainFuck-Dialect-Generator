@@ -1,10 +1,10 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Using Space</title>
+        <title>BF2DI</title>
         <link href="../CSS/style.css" rel="stylesheet" type="text/css">
         <script src="../JavaScript/Common.js"></script>
-        <script src="../JavaScript/Using Space.js"></script>
+        <script src="../JavaScript/Translator.js"></script>
     </head>
 
     <body onLoad="getPair()">
@@ -15,7 +15,7 @@
                 <legend>방언의 문법</legend>
                 
                 <table border="1">
-                    
+
                     <header>
                         <tr>
                             <td>문자</td>
@@ -68,12 +68,17 @@
                     <button onClick="saveDialect()" id="save">현재 문법<br>저장하기</button>
                 </a>
             </fieldset>
-
             <summary>적용된 문법 보기</summary>
         </details><br>
 
-        <textarea id="code" onInput="isContainComma()" placeholder="여기에 코드 입력"></textarea><span id="showButton"></span>
-        <textarea readonly id="output">결과</textarea>
+        <textarea id="beTranslate" placeholder="번역될 브레인퍽 코드" onInput="proxy()"></textarea>
+        <textarea readonly id="translated">번역된 방언 코드</textarea>
+
+        <script>
+            function proxy(){
+                BF2DI();
+            }
+        </script>
     </body>
 
 </html>
