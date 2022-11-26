@@ -35,7 +35,7 @@ function getPair(){
         ']': pair.close
     };
     
-    /*
+    /* 작동하지 않는 코드
     di_bf = {
         pair.gt: '>',
         pair.lt: '<',
@@ -111,24 +111,6 @@ function dispDialect(){
     console.log(bf_to_di('><+-.,[]'));
 }
 
-function saveDialect(){
-    var export_file = {
-        isDialect: true,
-        gt: bf_di['>'],
-        lt: bf_di['<'],
-        plus: bf_di['+'],
-        minus: bf_di['-'],
-        dot: bf_di['.'],
-        comma: bf_di[','],
-        open: bf_di['['],
-        close: bf_di[']'],
-    }; export_file = JSON.stringify(export_file, null, "\t");
-
-    var dataURI = "data:application/json; charset=UTF-8," + encodeURIComponent(export_file);
-    var link = document.getElementById('export');
-    link.href = dataURI;
-}
-
 function di_to_bf(code){
     var s = '';
 
@@ -172,7 +154,7 @@ function di_to_bf(code){
                 tmp += code[j];
             }
             
-            /*
+            /* 작동하지 않는 코드
             if(di_bf[tmp] != undefined){
                 s += di_bf[tmp];
                 i = j-1;

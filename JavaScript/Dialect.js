@@ -129,3 +129,21 @@ function renewing(){
     setPair();
     dispDialect();
 }
+
+function saveDialect(){
+    var export_file = {
+        isDialect: true,
+        gt: bf_di['>'],
+        lt: bf_di['<'],
+        plus: bf_di['+'],
+        minus: bf_di['-'],
+        dot: bf_di['.'],
+        comma: bf_di[','],
+        open: bf_di['['],
+        close: bf_di[']'],
+    }; export_file = JSON.stringify(export_file, null, "\t");
+
+    var dataURI = "data:application/json; charset=UTF-8," + encodeURIComponent(export_file);
+    var link = document.getElementById('export');
+    link.href = dataURI;
+}
